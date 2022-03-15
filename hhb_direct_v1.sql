@@ -16,7 +16,7 @@ SET escape_string_warning = off;
 -- Name: hhbdirect; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE DATABASE hhbdirect WITH TEMPLATE = template0 ENCODING = 'UTF8' ;
+-- CREATE DATABASE hhbdirect WITH TEMPLATE = template0 ENCODING = 'UTF8' ;
 
 
 ALTER DATABASE hhbdirect OWNER TO postgres;
