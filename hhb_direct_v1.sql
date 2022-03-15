@@ -213,7 +213,7 @@ INSERT INTO affecter (num_client, date, num_agence) VALUES (5, '2012-11-02', NUL
 
 INSERT INTO agence (num_agence, nom_agence, adresse_agence, tel_agence) VALUES (1, 'CAEN Centre', '13 Rue St Pierre, 14000 CAEN', '0233456789');
 INSERT INTO agence (num_agence, nom_agence, adresse_agence, tel_agence) VALUES (3, 'Lannion', '2 bis Rue de Brelevenez, 22300 LANNION', '0232564345');
-INSERT INTO agence (num_agence, nom_agence, adresse_agence, tel_agence) VALUES (2, 'Nogent sur Marne', '12 Bd de Strasbourg, 94230 Nogent sur Marne', '0145232356');
+INSERT INTO agence (num_agence, nom_agence, adresse_agence, tel_agence) VALUES (2, 'Nogent-sur-Marne', '12 Bd de Strasbourg, 94230 Nogent sur Marne', '0145232356');
 
 
 --
@@ -225,7 +225,7 @@ INSERT INTO agence (num_agence, nom_agence, adresse_agence, tel_agence) VALUES (
 INSERT INTO client (num_client, nom_client, prenom_client, adresse_client, identifiant_internet, mdp_internet) VALUES (1, 'DUPONT', 'Pierre', '5 Rue du Port, 22300 LANNION', 'Pdupont', 'Pdupont');
 INSERT INTO client (num_client, nom_client, prenom_client, adresse_client, identifiant_internet, mdp_internet) VALUES (2, 'DUPONT', 'Annie', '5 Rue du Port, 22300 LANNION', 'Adupont', 'Adupont');
 INSERT INTO client (num_client, nom_client, prenom_client, adresse_client, identifiant_internet, mdp_internet) VALUES (3, 'DELAVAL', 'Jean', '12 Bd de l''Orne, 14234 OUISTREHAM', 'Jdelaval', 'Jdelaval');
-INSERT INTO client (num_client, nom_client, prenom_client, adresse_client, identifiant_internet, mdp_internet) VALUES (4, 'HANOT', 'Eric', '13 Avenue de Neuilly, 94230 NOGENT SUR MARNE', 'Ehanot', 'Ehanot');
+INSERT INTO client (num_client, nom_client, prenom_client, adresse_client, identifiant_internet, mdp_internet) VALUES (4, 'HANOT', 'Eric', '13 Avenue de Neuilly, 94230 NOGENT-SUR-MARNE', 'Ehanot', 'Ehanot');
 INSERT INTO client (num_client, nom_client, prenom_client, adresse_client, identifiant_internet, mdp_internet) VALUES (5, 'LEVY', 'Sarah', '1 Rue Neuve, 14110 CONDE SUR NOIREAU', 'Slevy', 'Slevy');
 
 
