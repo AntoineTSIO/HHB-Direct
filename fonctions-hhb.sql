@@ -21,7 +21,7 @@ LANGUAGE plpgsql;
 
 -- TD Introduction Langage PL/pgSQL  |  Exercice 7
 
-DROP FUNCTION getNbClientsParVille();
+DROP FUNCTION getNbClientsParVille(une_ville varchar);
 CREATE OR REPLACE FUNCTION getNbClientsParVille(une_ville varchar) RETURNS integer AS
 $$
     DECLARE
@@ -37,6 +37,30 @@ $$
             end if;
         end loop;
         return  nbClientsDebiteurs;
+    END;
+$$
+LANGUAGE plpgsql;
+
+
+-- TD Introduction Langage PL/pgSQL  |  Exercice 7
+
+DROP FUNCTION enregistrerUnNouveauClient(new_nom_client varchar, new_prenom_client varchar, new_adresse_client varchar, new_identifiant_internet varchar, new_mdp_internet varchar);
+CREATE OR REPLACE FUNCTION enregistrerUnNouveauClient(new_nom_client varchar, new_prenom_client varchar, new_adresse_client varchar, new_identifiant_internet varchar, new_mdp_internet varchar) RETURNS varchar AS
+$$
+    DECLARE
+        last_id integer;
+        new_num_client integer;
+        test_id integer;
+    BEGIN
+        SELECT INTO last_id max(client.num_client) FROM client ;
+        new_num_client:=last_id+1;
+        INSERT INTO client(num_client, nom_client, prenom_client, adresse_client, identifiant_internet, mdp_internet) VALUES (new_num_client, new_nom_client, new_prenom_client, new_adresse_client, new_identifiant_internet, new_mdp_internet);
+        SELECT INTO test_id max(client.num_client) FROM client ;
+        IF test_id = new_num_client THEN
+            return 'Nouveau client bien enregistré';
+        ELSE
+            return 'Erreur lors de l`enregistrement du nouveau client';
+        end if;
     END;
 $$
 LANGUAGE plpgsql;
