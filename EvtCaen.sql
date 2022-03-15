@@ -83,20 +83,3 @@ VALUES (310, 30, '2021-01-23', 1, NULL, NULL, 'Achat CB', 'DEBIT', 120);
 
 INSERT INTO operation (id_operation, num_compte, date, id_type, id_type_vers, num_compte_vers, designation, type_operation, montant)
 VALUES (311, 30, '2021-01-31', 1, NULL, NULL, 'Salaire', 'CREDIT', 4500);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
