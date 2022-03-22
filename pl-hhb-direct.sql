@@ -34,3 +34,27 @@ $$
     END;
 $$
 LANGUAGE plpgsql;
+
+-- TD HHB-Direct Langage PL/pgSQL  |  Exercice 2
+
+DROP FUNCTION IF EXISTS nb_operation_compte_mois(mois int, annee int, numcompte int, typecompte int);
+CREATE OR REPLACE FUNCTION nb_operation_compte_mois(mois int, annee int, numcompte int, typecompte int) RETURNS integer AS
+$$
+    DECLARE
+        curseur CURSOR FOR select num_compte, id_type, date from operation ;
+        resultat RECORD ;
+        unMois int;
+        uneAnnee int;
+        res integer := 0;
+    BEGIN
+        FOR resultat IN curseur LOOP
+            unMois := extract(month from resultat.date);
+            uneAnnee := extract(year from resultat.date);
+            IF uneAnnee = annee AND unMois = mois AND resultat.num_compte = numcompte AND resultat.id_type = typecompte THEN
+                res:=res+1;
+            end if;
+        end loop;
+        return res ;
+    END;
+$$
+LANGUAGE plpgsql;
