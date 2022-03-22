@@ -83,3 +83,31 @@ $$
     END;
 $$
 LANGUAGE plpgsql;
+
+-- TD HHB-Direct Langage PL/pgSQL  |  Exercice 4
+
+DROP FUNCTION IF EXISTS creer_date(mois integer, annee integer);
+CREATE OR REPLACE FUNCTION creer_date(mois integer, annee integer) RETURNS void AS
+$$
+    DECLARE
+        nbJours integer;
+        jour integer := 01;
+        uneDate date;
+    BEGIN
+        IF mois=04 or mois=06 or mois=09 or mois=11 THEN
+            nbJours := 30;
+        ELSIF mois=01 or mois=03 or mois=05 or mois=07 or mois=08 or mois=10 or mois=12 THEN
+            nbJours := 31;
+        ELSIF mois = 02 and annee%4 = 0 THEN
+            nbJours := 29;
+        ELSE
+            nbJours := 28;
+        END IF;
+        WHILE jour <= nbJours LOOP
+            uneDate := annee||'-'||mois||'-'||jour;
+            INSERT INTO date(date) VALUES (uneDate);
+            jour:=jour+1;
+        END LOOP;
+    END;
+$$
+LANGUAGE plpgsql;
