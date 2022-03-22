@@ -58,3 +58,28 @@ $$
     END;
 $$
 LANGUAGE plpgsql;
+
+-- TD HHB-Direct Langage PL/pgSQL  |  Exercice 3
+
+DROP FUNCTION IF EXISTS creer_id_internet(nom varchar, prenom varchar);
+CREATE OR REPLACE FUNCTION creer_id_internet(nom varchar, prenom varchar) RETURNS varchar AS
+$$
+    DECLARE
+        curseur CURSOR FOR select count(num_client) as num_client,identifiant_internet from client group by identifiant_internet;
+        resultat RECORD ;
+        newID integer:=0;
+        idInternet varchar;
+        mdpInternet varchar;
+    BEGIN
+        idInternet := substring(prenom from '^[A-Z]')|| lower(nom);
+        mdpInternet := idInternet;
+        FOR resultat IN curseur LOOP
+            newID:= count(resultat.num_client);
+            IF resultat.identifiant_internet = idInternet THEN
+                idInternet := idInternet||newID;
+            end if;
+        end loop;
+        return idInternet ||'/'|| mdpInternet ;
+    END;
+$$
+LANGUAGE plpgsql;
