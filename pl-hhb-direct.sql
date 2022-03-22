@@ -72,13 +72,13 @@ $$
         mdpInternet varchar;
     BEGIN
         idInternet := substring(prenom from '^[A-Z]')|| lower(nom);
-        mdpInternet := idInternet;
         FOR resultat IN curseur LOOP
             newID:= count(resultat.num_client);
             IF resultat.identifiant_internet = idInternet THEN
                 idInternet := idInternet||newID;
             end if;
         end loop;
+        mdpInternet := idInternet;
         return idInternet ||'/'|| mdpInternet ;
     END;
 $$
