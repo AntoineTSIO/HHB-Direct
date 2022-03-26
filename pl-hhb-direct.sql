@@ -111,3 +111,35 @@ $$
     END;
 $$
 LANGUAGE plpgsql;
+
+-- TD HHB-Direct Langage PL/pgSQL  |  Exercice 5
+
+DROP FUNCTION IF EXISTS creer_user_client();
+CREATE OR REPLACE FUNCTION creer_user_client() RETURNS void AS
+$$
+    DECLARE
+        curseur CURSOR FOR select num_client, identifiant_internet, mdp_internet from client;
+        curseur1 CURSOR FOR select usename from pg_user;
+        identifiant varchar;
+        mdp varchar;
+        resultat RECORD ;
+        resultat1 RECORD ;
+        booléen boolean;
+    BEGIN
+        FOR resultat IN curseur LOOP
+            identifiant:=resultat.identifiant_internet;
+            mdp:=resultat.mdp_internet;
+            FOR resultat1 IN curseur1 LOOP
+                IF identifiant = resultat1.usename THEN
+                    booléen := false;
+                ELSE
+                    booléen := true;
+                end if;
+            end loop;
+            IF booléen = true THEN
+                INSERT INTO pg_user (usename) VALUES (identifiant);
+            end if;
+        end loop;
+    END;
+$$
+LANGUAGE plpgsql;
